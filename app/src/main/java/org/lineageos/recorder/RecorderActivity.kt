@@ -48,7 +48,7 @@ import org.lineageos.recorder.utils.PreferencesManager
 import org.lineageos.recorder.utils.Utils
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeFormatterBuilder
+import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
 import java.util.Locale
 import kotlin.reflect.safeCast
@@ -371,11 +371,9 @@ class RecorderActivity : AppCompatActivity(R.layout.activity_main) {
     private val newRecordFileName: String
         get() {
             val tag = locationHelper.currentLocationName ?: FILE_NAME_FALLBACK
-            val formatter = DateTimeFormatterBuilder()
-                .append(DateTimeFormatter.ISO_LOCAL_DATE)
-                .appendLiteral(' ')
-                .append(DateTimeFormatter.ISO_LOCAL_TIME)
-                .toFormatter(Locale.getDefault())
+            val formatter = DateTimeFormatter
+                .ofLocalizedDateTime(FormatStyle.MEDIUM)
+                .withLocale(Locale.getDefault())
             val now = LocalDateTime.now()
             return String.format(
                 FILE_NAME_BASE, tag,

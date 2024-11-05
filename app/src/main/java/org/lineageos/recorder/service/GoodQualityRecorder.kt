@@ -27,7 +27,7 @@ class GoodQualityRecorder(private val context: Context) : SoundRecording {
             MediaRecorder()
         }).apply {
             setOutputFile(path.toFile())
-            setAudioSource(MediaRecorder.AudioSource.MIC)
+            setAudioSource(MediaRecorder.AudioSource.DEFAULT)
             setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
             setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
             prepare()

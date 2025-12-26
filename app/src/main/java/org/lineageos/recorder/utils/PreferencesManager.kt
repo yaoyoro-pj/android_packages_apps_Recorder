@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2021-2024 The LineageOS Project
+ * SPDX-FileCopyrightText: 2021-2025 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -12,7 +12,7 @@ class PreferencesManager(context: Context) {
     private val preferences = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
 
     var recordInHighQuality: Boolean
-        get() = preferences.getInt(PREF_RECORDING_QUALITY, 0) == 1
+        get() = preferences.getInt(PREF_RECORDING_QUALITY, 1) == 1
         set(value) {
             preferences.edit()
                 .putInt(PREF_RECORDING_QUALITY, if (value) 1 else 0)
